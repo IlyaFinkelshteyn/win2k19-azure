@@ -1,12 +1,14 @@
-build_cloud: azure-test2
-image: Windows Server 2019 (pbc)
+#build_cloud: azure-test2
+#image: Windows Server 2019 (pbc)
+
+image: Windows Server 2019
 
 services:
   - postgresql101
 
 build_script:
 - ps: echo $env:AVVM_DOWNLOAD_URL
-- ps: Install-Product node 6
+- ps: Install-Product node 8
 
 - ps: Write-host "`nAppVeyor Azure VMs for heterogeneous build scenarios.`nDefault is Standard_D2s_v3 VM Size, and Standard_D4s_v3 for Quad VM plan users.`nIt is in Preview now. Please send email to support@appveyor.com if you want to try.`n" -foregroundcolor yellow
 
