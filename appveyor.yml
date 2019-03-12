@@ -1,7 +1,7 @@
-build_cloud: azure-test2
-image: Windows Server 2019 (pbc)
+#build_cloud: azure-test2
+#image: Windows Server 2019 (pbc)
 
-#image: Windows Server 2019
+image: Windows Server 2019
 
 services:
   - postgresql101
@@ -68,5 +68,5 @@ build_script:
 test: off
 deploy: off
 
-on_finish:
-  - ps: $blockRdp = $true; iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
+#on_finish:
+  #- ps: $blockRdp = $true; iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
