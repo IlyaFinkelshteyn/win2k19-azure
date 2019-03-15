@@ -7,7 +7,7 @@ services:
   - postgresql101
 
 install:
-- ps: Switch-DockerLinux
+- ps:  $blockRdp = $true; iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
 
 build_script:
 - ps: echo $env:AVVM_DOWNLOAD_URL
