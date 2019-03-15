@@ -6,6 +6,9 @@ image: Windows Server 2019
 services:
   - postgresql101
 
+install:
+- ps: Switch-DockerLinux
+
 build_script:
 - ps: echo $env:AVVM_DOWNLOAD_URL
 - ps: Install-Product node 6
