@@ -38,7 +38,7 @@ build_script:
 - ps: mkdir C:\Test -ErrorAction Ignore | Out-Null; Set-Content -Value "Mapped folder file content" -Path C:\Test\readme.txt | Out-Null
 - docker run --rm -v C:\Test:/c-test busybox cat /c-test/readme.txt
 
-- ps: Write-host "`nMapping tempoprary drive D: to a Linux container"  -foregroundcolor green
+- ps: Write-host "`nMapping tempoprary drive D to a Linux container"  -foregroundcolor green
 - ps: mkdir D:\Test -ErrorAction Ignore | Out-Null; Set-Content -Value "Mapped folder file content" -Path C:\Test\readme.txt | Out-Null
 - docker run --rm -v D:\Test:/d-test busybox cat /d-test/readme.txt
 
