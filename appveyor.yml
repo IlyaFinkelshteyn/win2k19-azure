@@ -34,13 +34,13 @@ clone_script:
 - ps: Write-host "`nRunning simple command in Linux container" -foregroundcolor green
 - docker run --rm busybox echo hello_world_busybox
    
-- ps: Write-host "`nMapping local folder to a Linux container"  -foregroundcolor green
-- ps: mkdir C:\Test -ErrorAction Ignore | Out-Null; Set-Content -Value "Mapped folder file content" -Path C:\Test\readme.txt | Out-Null
-- docker run --rm -v C:\Test:/c-test busybox cat /c-test/readme.txt
+# - ps: Write-host "`nMapping local folder to a Linux container"  -foregroundcolor green
+# - ps: mkdir C:\Test -ErrorAction Ignore | Out-Null; Set-Content -Value "Mapped folder file content" -Path C:\Test\readme.txt | Out-Null
+# - docker run --rm -v C:\Test:/c-test busybox cat /c-test/readme.txt
 
-- ps: Write-host "`nMapping tempoprary drive D to a Linux container"  -foregroundcolor green
-- ps: mkdir D:\Test -ErrorAction Ignore | Out-Null; Set-Content -Value "Mapped folder file content" -Path C:\Test\readme.txt | Out-Null
-- docker run --rm -v D:\Test:/d-test busybox cat /d-test/readme.txt
+# - ps: Write-host "`nMapping tempoprary drive D to a Linux container"  -foregroundcolor green
+# - ps: mkdir D:\Test -ErrorAction Ignore | Out-Null; Set-Content -Value "Mapped folder file content" -Path C:\Test\readme.txt | Out-Null
+# - docker run --rm -v D:\Test:/d-test busybox cat /d-test/readme.txt
 
 - ps: Write-host "`nRunning simple command in Ununtu 18.04 container (no local image exists)" -foregroundcolor green
 - docker run --rm ubuntu:18.04 echo hello_world_ubuntu_18_04
