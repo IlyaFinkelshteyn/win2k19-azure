@@ -1,17 +1,17 @@
-#build_cloud: azure-test2
-#image: Windows Server 2019 (pbc)
+build_cloud: azure-test2
+image: Windows Server 2019 (pbc)
 
-image: Windows Server 2019
+#image: Windows Server 2019
 
-services:
-  - postgresql101
+#services:
+#  - postgresql101
 
-install:
-- ps:  $blockRdp = $true; iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
+#install:
+#- ps:  $blockRdp = $true; iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
 
 build_script:
-- ps: echo $env:AVVM_DOWNLOAD_URL
-- ps: Install-Product node 6
+#- ps: echo $env:AVVM_DOWNLOAD_URL
+#- ps: Install-Product node 6
 
 - ps: Write-host "`nAppVeyor Azure VMs for heterogeneous build scenarios.`nDefault is Standard_D2s_v3 VM Size, and Standard_D4s_v3 for Quad VM plan users.`nIt is in Preview now. Please send email to support@appveyor.com if you want to try.`n" -foregroundcolor yellow
 
@@ -25,6 +25,12 @@ build_script:
 
 - ps: Write-host "`n*** DOCKER ***`n" -foregroundcolor yellow
 
+- ps: Write-host "`nSwitch to linux engine"  -foregroundcolor green
+- ps: Switch-DockerLinux
+
+- ps: Write-host "`nList local docker linux images"  -foregroundcolor green
+- docker images
+
 - ps: Write-host "`nRunning simple command in Linux container" -foregroundcolor green
 - docker run --rm busybox echo hello_world_busybox
    
@@ -32,11 +38,18 @@ build_script:
 - ps: mkdir C:\Test -ErrorAction Ignore | Out-Null; Set-Content -Value "Mapped folder file content" -Path C:\Test\readme.txt | Out-Null
 - docker run --rm -v C:\Test:/c-test busybox cat /c-test/readme.txt
 
-- ps: Write-host "`nList local docker images"  -foregroundcolor green
-- docker images
+- ps: Write-host "`nMapping tempoprary drive D: to a Linux container"  -foregroundcolor green
+- ps: mkdir D:\Test -ErrorAction Ignore | Out-Null; Set-Content -Value "Mapped folder file content" -Path C:\Test\readme.txt | Out-Null
+- docker run --rm -v D:\Test:/d-test busybox cat /d-test/readme.txt
 
 - ps: Write-host "`nRunning simple command in Ununtu 18.04 container (no local image exists)" -foregroundcolor green
 - docker run --rm ubuntu:18.04 echo hello_world_ubuntu_18_04
+
+- ps: Write-host "`nSwitch to Windows engine"  -foregroundcolor green
+- ps: Switch-DockerWindows
+
+- ps: Write-host "`nList local docker Windows images"  -foregroundcolor green
+- docker images
 
 - ps: Write-host "`nRun Server Core images in Hyper-V isolation mode"  -foregroundcolor green
 - docker run --rm --isolation=hyperv mcr.microsoft.com/windows/servercore:ltsc2016 cmd /c echo hello_world_servercore_ltsc2016
