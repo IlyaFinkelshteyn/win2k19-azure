@@ -51,17 +51,15 @@ clone_script:
 - ps: Write-host "`nList local docker Windows images"  -foregroundcolor green
 - docker images
 
-- ps: Write-host "`nRun Server Core images in Hyper-V isolation mode"  -foregroundcolor green
+- ps: Write-host "`nRun Server Core images" -foregroundcolor green
 - docker run --rm --isolation=hyperv mcr.microsoft.com/windows/servercore:ltsc2016 cmd /c echo hello_world_servercore_ltsc2016
-- docker run --rm --isolation=hyperv mcr.microsoft.com/windows/servercore:1709 cmd /c echo hello_world_servercore_1709
 - docker run --rm --isolation=hyperv mcr.microsoft.com/windows/servercore:1803 cmd /c echo hello_world_servercore_1803
-- docker run --rm --isolation=hyperv mcr.microsoft.com/windows/servercore:ltsc2019 cmd /c echo hello_world_servercore_ltsc2019
+- docker run --rm --isolation=default mcr.microsoft.com/windows/servercore:ltsc2019 cmd /c echo hello_world_servercore_ltsc2019
             
-- ps: Write-host "`nRun Nano Server images in Hyper-V isolation mode"  -foregroundcolor green
+- ps: Write-host "`nRun Nano Server images"  -foregroundcolor green
 - docker run --rm --isolation=hyperv mcr.microsoft.com/windows/nanoserver:sac2016 cmd /c echo hello_world_nanoserver_sac2016
-- docker run --rm --isolation=hyperv mcr.microsoft.com/windows/nanoserver:1709 cmd /c echo hello_world_nanoserver_1709
 - docker run --rm --isolation=hyperv mcr.microsoft.com/windows/nanoserver:1803 cmd /c echo hello_world_nanoserver_1803
-- docker run --rm --isolation=hyperv mcr.microsoft.com/windows/nanoserver:1809 cmd /c echo hello_world_nanoserver_1809
+- docker run --rm --isolation=default mcr.microsoft.com/windows/nanoserver:1809 cmd /c echo hello_world_nanoserver_1809
 
 - ps: Write-host "`n*** WSL ***`n" -foregroundcolor yellow
 
