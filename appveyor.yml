@@ -3,16 +3,16 @@ image: Windows Server 2019 (pbc)
 
 #image: Windows Server 2019
 
-#services:
-#  - postgresql101
+services:
+  - postgresql101
 
 #init:
 #- ps:  $blockRdp = $true; iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
 
-clone_script:
-# build_script:
-#- ps: echo $env:AVVM_DOWNLOAD_URL
-#- ps: Install-Product node 6
+#clone_script:
+build_script:
+- ps: Install-Product node 6
+
 - ps: Write-host "`nAppVeyor Azure VMs for heterogeneous build scenarios.`nDefault is Standard_D2s_v3 VM Size, and Standard_D4s_v3 for Quad VM plan users.`nIt is in Preview now. Please send email to support@appveyor.com if you want to try.`n" -foregroundcolor yellow
 
 - ps: Write-host "`n*** VM CONFIGURATION ***`n" -foregroundcolor yellow
@@ -78,6 +78,5 @@ clone_script:
 - ps: Write-host "`nRDP access to Azure VMs available the same way as for other AppVeyor builds"  -foregroundcolor green
 - ps: iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
 
-build: off
 test: off
 deploy: off
