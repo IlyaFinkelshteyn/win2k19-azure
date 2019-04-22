@@ -41,8 +41,8 @@ clone_script:
     Write-host "`nDrive D: is shared in Docker for Windows to exhange files between Linux containers and build VM"  -foregroundcolor green
     Write-host "Here we creating folder and file on the host VM and checking it from Linux container:"  -foregroundcolor green
     mkdir D:\host | Out-Null
-#   Set-Content -Value "Mapped folder file content" -Path D:\host\readme.txt | Out-Null
-#   docker run --rm -v D:/host:/host busybox cat /host/readme.txt
+    Set-Content -Value "Mapped folder file content" -Path D:\host\readme.txt | Out-Null
+    docker run --rm -v D:/host:/host busybox cat /host/readme.txt
 
 - ps: Write-host "`nSwitch to Windows engine"  -foregroundcolor green
 - ps: Switch-DockerWindows
