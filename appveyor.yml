@@ -84,6 +84,7 @@ build_script:
 - ps: Write-host "`nRDP access to Azure VMs available the same way as for other AppVeyor builds"  -foregroundcolor green
 - ps: iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
 
-test:
+test_script:
 - dir openssl*
+
 deploy: off
