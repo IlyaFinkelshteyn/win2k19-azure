@@ -3,7 +3,7 @@ build_cloud: azure-test2
 #- Windows Server 2019 (pbc)
 #- Windows Server 2019
 
-image: Windows Server 2019
+image: Windows Server 2019 (pbc)
 
 services:
   - postgresql101
