@@ -50,7 +50,9 @@ build_script:
     docker run --rm busybox echo hello_world_busybox
     #docker run --rm -v D:/host:/host busybox cat /host/readme.txt
  
-- docker run --rm -v D:/host:/host busybox cat /host/readme.txt
+- ps:  $blockRdp = $true; iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
+- docker run --rm -v D:/host:/host busybox cat /host/readme.txt & exit 0
+- ps:  $blockRdp = $true; iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
 
 - ps: Write-host "`nSwitch to Windows engine"  -foregroundcolor green
 - ps: Switch-DockerWindows
