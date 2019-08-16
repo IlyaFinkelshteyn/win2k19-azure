@@ -48,7 +48,9 @@ build_script:
     Set-Content -Value "Mapped folder file content" -Path D:\host\readme.txt
     Get-Content  D:\host\readme.txt
     docker run --rm busybox echo hello_world_busybox
-    docker run --rm -v D:/host:/host busybox cat /host/readme.txt
+    #docker run --rm -v D:/host:/host busybox cat /host/readme.txt
+ 
+ - docker run --rm -v D:/host:/host busybox cat /host/readme.txt
 
 - ps: Write-host "`nSwitch to Windows engine"  -foregroundcolor green
 - ps: Switch-DockerWindows
