@@ -71,7 +71,7 @@ build_script:
 - ps: Write-host "`n*** WSL ***`n" -foregroundcolor yellow
 
 - ps: Write-host "`nRun Ubuntu in WSL"  -foregroundcolor green
-- wslconfig /setdefault ubuntu
+- wslconfig /setdefault ubuntu-16.04
 - wsl lsb_release -a
 
 - ps: Write-host "`nRun Ubuntu 18.04 in WSL"  -foregroundcolor green
