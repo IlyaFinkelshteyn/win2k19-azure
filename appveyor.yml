@@ -8,8 +8,8 @@ image: Windows Server 2019 (pbc)
 services:
   - postgresql101
 
-init:
-- ps:  $blockRdp = $true; iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
+#init:
+#- ps:  $blockRdp = $true; iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
 
 #clone_script:
 build_script:
