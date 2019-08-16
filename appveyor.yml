@@ -1,6 +1,6 @@
 build_cloud: azure-test2
-#image:
-#- Windows Server 2019 (pbc)
+image:
+- Windows Server 2019 (pbc)
 #- Windows Server 2019
 
 image: Windows Server 2019 (pbc)
